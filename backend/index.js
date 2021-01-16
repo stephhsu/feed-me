@@ -18,6 +18,8 @@ app.get('/', (req, res) => {
 app.get('/recipes/:id', recipe_db.getRecipeById)
 app.post('/recipes', recipe_db.createRecipe)
 
+
+// google maps places API
 var api_key = "AIzaSyCl_IgI5fn2FVtiDm0xXCa_VlR_K-xctdc";
 var location = "-33.8670522,151.1957362";
 var radius = "300";
@@ -36,17 +38,7 @@ request.get(maps_endpoint, (error, response, body) => {
     console.dir(JSON.parse(body));
 })
 
+
 app.listen(3000, () => {
     console.log(`listening on 3000`);
 });
-
-/*
-var request = require('request');
-
-var url = "https://api.spoonacular.com/recipes/complexSearch";
-var query = "?query=pasta&maxFat=25&number=2";
-
-app.get('', function(req, res) {
-    re
-})
-*/
