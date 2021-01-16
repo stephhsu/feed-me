@@ -12,22 +12,22 @@ const routes = [
     component: HomePage
   },
   {
-    path: '/',
+    path: '/cook',
     name: 'Cook',
     component: Cook
   },
   {
-    path: '/',
+    path: '/cookResult',
     name: 'CookResult',
     component: CookResult
   },
   {
-    path: '/',
+    path: '/order',
     name: 'Order',
     component: Order
   },
   {
-    path: '/',
+    path: '/orderResult',
     name: 'OrderResult',
     component: OrderResult
   },
