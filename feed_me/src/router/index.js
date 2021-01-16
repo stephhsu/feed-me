@@ -4,7 +4,7 @@ import Cook from '../Views/Cook.vue'
 import CookResult from '../Views/CookResult.vue'
 import Order from '../Views/Order.vue'
 import OrderResult from '../Views/OrderResult.vue'
-
+import NotFound from "../Views/NotFound.vue"
 const routes = [
   {
     path: '/',
@@ -12,25 +12,30 @@ const routes = [
     component: HomePage
   },
   {
-    path: '/',
+    path: '/cook',
     name: 'Cook',
     component: Cook
   },
   {
-    path: '/',
+    path: '/cook-result',
     name: 'CookResult',
     component: CookResult
   },
   {
-    path: '/',
+    path: '/order',
     name: 'Order',
     component: Order
   },
   {
-    path: '/',
+    path: '/order-result',
     name: 'OrderResult',
     component: OrderResult
   },
+  {
+    path: "/:catchAll(.*)",
+    component: NotFound,
+  },
+
 ]
 
 const router = createRouter({
