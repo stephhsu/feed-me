@@ -1,15 +1,24 @@
 require('dotenv').config()
 
 const { Pool } = require('pg')
+const format = require('pg-format');
 
 // put these in .env
 const pool = new Pool({
-    user: "postgres",
-    host: "localhost",
+    host: "35.192.174.106",
     database: "feed-me-db",
-    password: "vickytoria",
+    user: "postgres",
+    password: "vickytoria"
+})
+/*
+const pool = new Pool({
+    user: process.env.DB_USER,
+    host: process.env.DB_HOST,
+    database: process.env.DB_DATABASE,
+    password: process.env.DB_PASS,
     port: 5432
 })
+*/
 
 const getRecipeById = (request, response) => {
     const id = parseInt(request.params.id)

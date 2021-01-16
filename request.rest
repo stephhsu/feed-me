@@ -1,7 +1,11 @@
-POST http://localhost:3000/recipes
+POST http://35.192.174.106/recipes
 Content-Type: application/json
 
 {
     "url": "recipe_url_test",
     "name": "recipe_name_test"
 }
+
+###
+
+GET http://35.192.174.106/recipes/1
