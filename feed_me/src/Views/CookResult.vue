@@ -2,7 +2,7 @@
   <div class="header">
     <img src="../../public/cookdone.png" />
     <h2>We got you some recipes you might like. Enjoy!</h2>
-    {{ recipes }}
+    <RecipeCard v-for="recipe in recipes" :key="recipe.id" :recipe="recipe"/>
    <router-link to="/"> Back to Home </router-link>
   </div>
 </template>
@@ -10,9 +10,12 @@
 //import router from "../router";
 import { ref } from "vue";
 import RecipeService from "../Services/RecipeService.js";
+import RecipeCard from "../components/RecipeCard.vue";
 export default {
   name: "HomePage",
-  components: {},
+  components: {
+    RecipeCard
+  },
   props: {
     cuisineType: {
       type: String,
@@ -24,7 +27,7 @@ export default {
     //const recipeService = new RecipeService(); //what we use to reference API
     RecipeService.GetRecipesByCuisineType(props.cuisineType)
       .then((resp) => {
-        recipes.value = resp.data;
+        recipes.value = resp.data.results;
       })
       .catch((err) => {
         console.log(err);
@@ -62,3 +65,4 @@ button {
   border-color: white;
 }
 </style>
+
