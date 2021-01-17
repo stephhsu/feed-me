@@ -1,13 +1,13 @@
 <template>
   <div class="header">
-    <img src="../../public/cook.png" />
-    <h2>We got you some recipes you might like. Enjoy!</h2>
-    <RecipeCard v-for="recipe in recipes" :key="recipe.id" :recipe="recipe"/>
+    <img src="../../public/cookdone.png" />
+    <h2>We got you some {{cuisineType}} recipes you might like. Enjoy!</h2>
+    <RecipeCard @click.prevent="goToRecipe(recipe.id)" v-for="recipe in recipes" :key="recipe.id" :recipe="recipe"/>
    <router-link to="/"> Back to Home </router-link>
   </div>
 </template>
 <script>
-//import router from "../router";
+import router from "../router";
 import { ref } from "vue";
 import RecipeService from "../Services/RecipeService.js";
 import RecipeCard from "../components/RecipeCard.vue";
@@ -24,7 +24,6 @@ export default {
   },
   setup(props) {
     let recipes = ref([]);
-    //const recipeService = new RecipeService(); //what we use to reference API
     RecipeService.GetRecipesByCuisineType(props.cuisineType)
       .then((resp) => {
         recipes.value = resp.data.results;
@@ -33,8 +32,15 @@ export default {
         console.log(err);
       });
 
+    function goToRecipe(id) {
+       router.push({
+        name: "Recipe",
+        params: { id: Number(id) },
+      });
+    }
     return {
       recipes,
+      goToRecipe
     };
   },
 };

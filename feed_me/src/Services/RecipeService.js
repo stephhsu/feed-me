@@ -6,10 +6,15 @@ const apiClient = axios.create({
         'Content-Type':'application/json'
     }
 })
-const key="5f50f4af0182474b8ac4bca604f3810f"
+const key="5f573c0ff3014d258af894fe0988e44b"
 
 export default {
     GetRecipesByCuisineType(cuisine) {
         return apiClient.get('https://api.spoonacular.com/recipes/complexSearch?cuisine='+cuisine.toLowerCase()+'&apiKey='+key)
+    },
+
+    GetRecipeData(ID) {
+        console.log(ID)
+        return apiClient.get("https://api.spoonacular.com/recipes/"+ID+"/information?includeNutrition=false&apiKey="+key)
     }
 }

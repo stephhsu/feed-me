@@ -2,7 +2,7 @@
   <router-link class="recipe-link" :to="{params: { id: recipe.id } }">
     <div class="recipe-card">
       <h4 class="recipe-title">{{recipe.title}}</h4>
-      <img src=recipe.image />
+      <img class="img" :src="imgUrl" />
     </div>
   </router-link>
 </template>
@@ -11,6 +11,12 @@
 export default {
   props: {
     recipe: Object
+  },
+  setup(props){
+    const imgUrl = String(props.recipe.image);
+    return {
+      imgUrl
+    }
   }
 }
 </script>
@@ -28,5 +34,9 @@ export default {
 }
 .recipe-card > .recipe-title {
   margin: 0;
+}
+
+.img {
+  border-radius: 50%;
 }
 </style>
