@@ -3,7 +3,9 @@
     <img src="../../public/cook.png" />
     <h2>We found some places you might like. Enjoy!</h2>
     <div class="map-container">
-        <Maps />
+        <Maps 
+            enteredAddress=""
+        />
     </div>
     {{ places }}
    <router-link to="/"> Back to Home </router-link>
@@ -28,18 +30,19 @@ export default {
     },
     priceRange: {
         type: String, 
-        required: true,
+        required: false,
+    },
+    distance: {
+        type: Number,
+        required: false,
     },
   },
   setup(props) {
     let places = ref([]);
     
-    PlacesService.GetPlacesByCuisineType(props.cuisineType)
+    PlacesService.GetPlacesByCuisineType(props.cuisineType, props.priceRange, props.distance)
       .then((resp) => {
         places.value = resp.data;
-      })
-      .then(() => {
-          
       })
       .catch((err) => {
         console.log(err);

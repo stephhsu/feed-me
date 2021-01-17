@@ -20,6 +20,11 @@
       <label class="priceLabel" for="expensive">$$$</label>
 
     </div>
+    <h2>How far would you like to go?</h2>
+    <div class="priceRange">
+      <input type="number" v-model="radius" min="0" />
+      <label class="priceLabel"> meters</label>
+    </div>
     <button @click.prevent="goToOrderResults">Go!</button>
   </div>
 </template>
@@ -36,12 +41,14 @@ export default {
   setup() {
     const cuisine = ref();
     const price = ref();
+    const radius = ref();
     function goToOrderResults() {
       router.push({
         name: "OrderResult",
         params: { 
           cuisineType: cuisine.value, 
           priceRange: price.value, 
+          distance: radius.value,
         },
       });
     }
@@ -49,6 +56,7 @@ export default {
       goToOrderResults,
       cuisine,
       price,
+      radius,
     };
   },
   data() {
