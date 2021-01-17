@@ -2,13 +2,13 @@
   <div class="header">
     <h1>Just sit back & relax, good food is closer than you think!</h1>
     <img src="../../public/order.svg" />
-    <h2>What are you craving?</h2>
+    <h3>What are you craving?</h3>
     <Dropdown
       :options="this.options"
       v-model="cuisine"
       label="Cuisine Type: "
     />
-    <h2>How much do you want to spend?</h2>
+    <h3>How much do you want to spend?</h3>
     <div class="priceRange">
       <input type="radio" name="price" id="inexpensive" value="inexpensive" v-model="price"/>
       <label class="priceLabel" for="inexpensive">$</label>
@@ -20,7 +20,7 @@
       <label class="priceLabel" for="expensive">$$$</label>
 
     </div>
-    <h2>How far would you like to go?</h2>
+    <h3>How far would you like to go?</h3>
     <div class="priceRange">
       <input type="number" v-model="radius" min="0" />
       <label class="priceLabel"> meters</label>
