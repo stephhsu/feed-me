@@ -4,15 +4,19 @@
     <h2>We found some places you might like. Enjoy!</h2>
     {{ places }}
    <router-link to="/"> Back to Home </router-link>
+
   </div>
 </template>
 <script>
 //import router from "../router";
 import { ref } from "vue";
 import PlacesService from "../Services/PlacesService.js";
+
 export default {
   name: "OrderResult",
-  components: {},
+  components: {
+
+  },
   props: {
     cuisineType: {
       type: String,
