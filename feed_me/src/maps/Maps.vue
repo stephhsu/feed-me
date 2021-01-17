@@ -13,7 +13,7 @@ export default {
       required: true,
     },
   },
-  async setup(props) {
+  async mounted(props) {
     try {
       let i
       let south = 0;
