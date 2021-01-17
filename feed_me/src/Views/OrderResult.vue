@@ -42,12 +42,9 @@ export default {
     
     PlacesService.GetPlacesByCuisineType(props.cuisineType, props.priceRange, props.distance)
       .then((resp) => {
-<<<<<<< HEAD
         places.value = resp.data;
         //console.log(places.value.results);
         //console.log(JSON.stringify(places.value));
-        
->>>>>>> 50518d59f9af831155df2c658e2aa87ae7cb183e
       })
       .catch((err) => {
         console.log(err);
