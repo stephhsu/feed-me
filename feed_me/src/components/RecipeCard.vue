@@ -22,7 +22,7 @@ export default {
 </script>
 
 <style scoped>
-@import url('https://fonts.googleapis.com/css2?family=Roboto+Slab&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Leckerli+One&family=Roboto+Slab&family=Source+Code+Pro&display=swap');
 .recipe-card {
   margin-left: 25%;
   margin-right: 25%;
@@ -54,5 +54,6 @@ export default {
 
 .img {
   border-radius: 60%;
+  padding: 15px;
 }
 </style>

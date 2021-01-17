@@ -46,6 +46,7 @@ export default {
 };
 </script>
 <style>
+@import url('https://fonts.googleapis.com/css2?family=Leckerli+One&family=Roboto+Slab&family=Source+Code+Pro&display=swap');
 .header {
   font-family: Avenir, Calibri, Helvetica, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -66,15 +67,16 @@ export default {
   align-content: center;
   height: 20%;
 }
+
 button {
   width: 25%;
   height: 200%;
-  font-size: 100%;
-  font-family: Arial;
+  font-size: 19px;
+  font-family: 'Leckerli One', cursive;
   text-align: center;
   background-color: rgb(108, 244, 238);
   color: rgb(79, 79, 79);
-  border-radius: 60px;
+  border-radius: 40px;
   border-color: white;
 }
 
