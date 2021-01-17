@@ -3,7 +3,9 @@
     <img src="../../public/cook.png" />
     <h2>We found some places you might like. Enjoy!</h2>
     <div class="map-container">
-        <Maps />
+        <Maps 
+          :places="places.value"
+        />
     </div>
     {{ places }}
    <router-link to="/"> Back to Home </router-link>
@@ -36,7 +38,8 @@ export default {
     
     PlacesService.GetPlacesByCuisineType(props.cuisineType)
       .then((resp) => {
-        places.value = resp.data;
+        places.value = resp.data.results;
+        
       })
       .then(() => {
           
