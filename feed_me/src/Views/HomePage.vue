@@ -14,13 +14,19 @@
         <button @click.prevent="goToOrderPage">I'll ORDER</button>
       </span>
     </div>
+    <Maps />
   </div>
+  
 </template>
 
 <script>
 import router from "../router";
+import Maps from "../maps/Maps.vue";
 export default {
   name: "HomePage",
+  components: {
+    Maps,
+  },
   setup() {
     function goToCookPage() {
       router.push({
