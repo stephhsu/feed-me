@@ -38,6 +38,7 @@ export default {
     function goToOrderResults() {
       router.push({
         name: "OrderResult",
+        params: { cuisineType: cuisine.value },
       });
     }
     return {
