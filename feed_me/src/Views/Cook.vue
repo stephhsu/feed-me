@@ -26,6 +26,7 @@ export default {
     function goToCookResults() {
       router.push({
         name: "CookResult",
+        params: { cuisineType: cuisine.value },
       });
     }
     return {

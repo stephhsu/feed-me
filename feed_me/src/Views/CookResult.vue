@@ -1,15 +1,9 @@
 <template>
   <div class="header">
-    <h1>Okay chef!</h1>
     <img src="../../public/cook.png" />
-    <h2>Let's get you some recipes.</h2>
-    <h3>Tell us what you're craving today:</h3>
-    <Dropdown
-      :options="this.options"
-      v-model="cuisine"
-      label="Cuisine Type: "
-    />
-    <button @click.prevent="goToCookResults">Go!</button>
+    <h2>We got you some recipes you might like. Enjoy!</h2>
+    {{ recipes }}
+   <router-link to="/"> Back to Home </router-link>
   </div>
 </template>
 <script>
@@ -18,24 +12,28 @@ import { ref } from "vue";
 import RecipeService from "../Services/RecipeService.js";
 export default {
   name: "HomePage",
-  components: {
-  },
+  components: {},
   props: {
-      cuisineType: {
-          type: String,
-          required: true
-      }
+    cuisineType: {
+      type: String,
+      required: true,
+    },
   },
   setup(props) {
-    let recipes =  ref([]);
-    const recipeService = new RecipeService(); //what we use to reference API
-    recipes.value = recipeService.GetRecipes(props.cuisineType);
-    
+    let recipes = ref([]);
+    //const recipeService = new RecipeService(); //what we use to reference API
+    RecipeService.GetRecipesByCuisineType(props.cuisineType)
+      .then((resp) => {
+        recipes.value = resp.data;
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+
     return {
-        recipes
+      recipes,
     };
   },
-
 };
 </script>
 <style>

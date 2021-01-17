@@ -19,7 +19,8 @@ const routes = [
   {
     path: '/cook-result',
     name: 'CookResult',
-    component: CookResult
+    component: CookResult,
+    props: true
   },
   {
     path: '/order',
@@ -29,7 +30,8 @@ const routes = [
   {
     path: '/order-result',
     name: 'OrderResult',
-    component: OrderResult
+    component: OrderResult,
+    props: true
   },
   {
     path: "/:catchAll(.*)",
