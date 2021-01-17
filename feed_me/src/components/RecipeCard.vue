@@ -1,10 +1,10 @@
 <template>
-  <router-link class="recipe-link" :to="{params: { id: recipe.id } }">
-    <div class="recipe-card">
+  <div class="recipe-card">
+    <router-link class="recipe-link" :to="{params: { id: recipe.id } }">
       <h4 class="recipe-title">{{recipe.title}}</h4>
       <img class="img" :src="imgUrl" />
-    </div>
-  </router-link>
+    </router-link>
+  </div>
 </template>
 
 <script>
@@ -22,12 +22,22 @@ export default {
 </script>
 
 <style scoped>
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Slab&display=swap');
 .recipe-card {
-  padding: 20px;
+  margin-left: 25%;
+  margin-right: 25%;
+  padding: 17px;
   margin-bottom: 24px;
   transition: all 0.2s linear;
   cursor: pointer;
+  background-color: #EBF5FB;
 }
+.recipe-title { 
+  font-family: 'Roboto Slab', serif;
+  font-size: 20px;
+  color: #2C3E50;
+}
+
 .recipe-card:hover {
   transform: scale(1.01);
   box-shadow: 0 3px 12px 0 rgba(0, 0, 0, 0.2), 0 1px 15px 0 rgba(0, 0, 0, 0.19);
@@ -36,7 +46,13 @@ export default {
   margin: 0;
 }
 
+.recipe-link {
+  color: black;
+  text-decoration: none;
+  font-weight: 100;
+}
+
 .img {
-  border-radius: 50%;
+  border-radius: 60%;
 }
 </style>

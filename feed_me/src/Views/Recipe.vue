@@ -8,11 +8,11 @@
     <h4>Cooking Time: {{ recipe.readyInMinutes }}</h4>
     <a :href="recipe.sourceUrl">Check out the original source here!</a>
     <h4>Ingredients Needed</h4>
-    <ol>
+    <ul>
       <li v-for="ingredient in recipe.extendedIngredients" :key="ingredient.id">
         {{ ingredient.original }}
       </li>
-    </ol>
+    </ul>
     <span class="back">
       <router-link to="/"> Back to Home </router-link>
     </span>
@@ -42,6 +42,7 @@ export default {
 };
 </script>
 <style>
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Slab&family=Source+Code+Pro&display=swap');
 .header {
   font-family: Avenir, Calibri, Helvetica, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -50,19 +51,36 @@ export default {
   color: #2c3e50;
 }
 
-li{
-    text-align: left;
+h2 {
+  font-family: 'Roboto Slab', serif;
+  font-size: 180%;
+  color: #2C3E50;
 }
+
+h4 {
+  font-family: 'Roboto Slab', serif;
+  font-size: 125%;
+  color: #2C3E50;
+}
+
+ul {
+  font-family: 'Roboto Slab', serif;
+  list-style-type: circle;
+  display: table;
+  margin: 0 auto;
+  text-align: left;
+  padding-bottom: 20px;
+}
+
 .img {
   border-radius: 25%;
   height: 30%;
   width: 50%;
 }
-.back {
-  display: flex;
-  text-align: center;
-}
-a:link {
+
+a:link .back:link{
+  font-family: 'Roboto Slab', serif;
+  list-style-type: circle;
   color: rgb(42, 44, 44);
 }
 a:active {
@@ -70,5 +88,14 @@ a:active {
 }
 a:hover {
   color: rgba(85, 223, 204, 0.76);
+}
+
+a:visited {
+  color: #2C3E50;
+}
+
+.back {
+  text-align: center;
+  padding-bottom: 30px;
 }
 </style>
