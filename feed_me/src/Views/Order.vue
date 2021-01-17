@@ -34,16 +34,21 @@ export default {
     Dropdown,
   },
   setup() {
-    const cuisine = ref("Select...");
+    const cuisine = ref();
+    const price = ref();
     function goToOrderResults() {
       router.push({
         name: "OrderResult",
-        params: { cuisineType: cuisine.value },
+        params: { 
+          cuisineType: cuisine.value, 
+          priceRange: price.value, 
+        },
       });
     }
     return {
       goToOrderResults,
       cuisine,
+      price,
     };
   },
   data() {

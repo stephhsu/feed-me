@@ -35,10 +35,8 @@ export default {
 </script>
 
 <style>
-
-
 .map {
-  width: 300px;
-  height: 300px;
+  width: 50%;
+  height: 450px;
 }
 </style>

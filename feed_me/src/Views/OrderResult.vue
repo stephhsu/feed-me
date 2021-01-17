@@ -2,6 +2,9 @@
   <div class="header">
     <img src="../../public/cook.png" />
     <h2>We found some places you might like. Enjoy!</h2>
+    <div class="map-container">
+        <Maps />
+    </div>
     {{ places }}
    <router-link to="/"> Back to Home </router-link>
 
@@ -11,24 +14,32 @@
 //import router from "../router";
 import { ref } from "vue";
 import PlacesService from "../Services/PlacesService.js";
+import Maps from "../maps/Maps.vue";
 
 export default {
   name: "OrderResult",
   components: {
-
+      Maps
   },
   props: {
     cuisineType: {
-      type: String,
-      required: true,
+        type: String,
+        required: true,
+    },
+    priceRange: {
+        type: String, 
+        required: true,
     },
   },
   setup(props) {
     let places = ref([]);
-    //const recipeService = new RecipeService(); //what we use to reference API
+    
     PlacesService.GetPlacesByCuisineType(props.cuisineType)
       .then((resp) => {
         places.value = resp.data;
+      })
+      .then(() => {
+          
       })
       .catch((err) => {
         console.log(err);
@@ -53,6 +64,10 @@ export default {
   grid-template-columns: auto auto;
   align-content: center;
   height: 20%;
+}
+.map-container {
+    position: relative;
+    left: 25%;
 }
 button {
   width: 25%;
