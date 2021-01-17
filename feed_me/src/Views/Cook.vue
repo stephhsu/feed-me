@@ -22,8 +22,9 @@ export default {
     Dropdown,
   },
   setup() {
-    const cuisine = ref("Select...");
+    const cuisine = ref("");
     function goToCookResults() {
+      console.log(cuisine.value)
       router.push({
         name: "CookResult",
         params: { cuisineType: cuisine.value },

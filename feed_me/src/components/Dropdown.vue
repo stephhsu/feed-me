@@ -6,11 +6,11 @@
   <span class="dropdown">
     <select
       class="field"
-      :value="modelVal"
+      :value="modelValue"
       v-bind="{
         ...$attrs,
         onChange: ($event) => {
-          $emit('update:modelVal', $event.target.value);
+          $emit('update:modelValue', $event.target.value);
         },
       }"
     >
@@ -18,7 +18,7 @@
         v-for="option in options"
         :value="option"
         :key="option"
-        :selected="option === modelVal"
+        :selected="option === modelValue"
         >{{ option }}</option
       >
     </select>
@@ -32,7 +32,7 @@ export default {
       type: String,
       required: true,
     },
-    modelVal: {
+    modelValue: {
       type: [String, Number],
       default: "",
     },
@@ -43,6 +43,7 @@ export default {
   },
 };
 </script>
+
 <style>
 .grid {
   display: grid;
@@ -50,8 +51,7 @@ export default {
   height: stretch;
 }
 
-label: {
-  align: right;
+.label {
   text-size: 25pt;
   padding-left: 3px;
 }
