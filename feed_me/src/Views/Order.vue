@@ -10,13 +10,13 @@
     />
     <h2>How much do you want to spend?</h2>
     <div class="priceRange">
-      <input type="radio" name="price" id="inexpensive" value="inexpensive"/>
+      <input type="radio" name="price" id="inexpensive" value="inexpensive" v-model="price"/>
       <label class="priceLabel" for="inexpensive">$</label>
 
-      <input type="radio" name="price" id="moderate" value="moderate"/>
+      <input type="radio" name="price" id="moderate" value="moderate" v-model="price"/>
       <label class="priceLabel" for="moderate">$$</label>
 
-      <input type="radio" name="price" id="expensive" value="expensive"/>
+      <input type="radio" name="price" id="expensive" value="expensive" v-model="price"/>
       <label class="priceLabel" for="expensive">$$$</label>
 
     </div>
