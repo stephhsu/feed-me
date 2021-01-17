@@ -7,13 +7,19 @@ import gmapsInit from './mapsInit';
 
 export default {
   name: 'App',
-  async mounted() {
+  props: {
+    enteredAddress: {
+      type: String,
+      required: true,
+    },
+  },
+  async mounted(props) {
     try {
       const google = await gmapsInit();
       const geocoder = new google.maps.Geocoder();
       const map = new google.maps.Map(this.$el);
 
-      geocoder.geocode({ address: 'Austria' }, (results, status) => {
+      geocoder.geocode({ address: props.enteredAddress }, (results, status) => {
         if (status !== 'OK' || !results[0]) {
           throw new Error(status);
         }
