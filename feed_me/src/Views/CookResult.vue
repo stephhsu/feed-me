@@ -1,6 +1,6 @@
 <template>
   <div class="header">
-    <img src="../../public/cook.png" />
+    <img src="../../public/cookdone.png" />
     <h2>We got you some recipes you might like. Enjoy!</h2>
     {{ recipes }}
    <router-link to="/"> Back to Home </router-link>
