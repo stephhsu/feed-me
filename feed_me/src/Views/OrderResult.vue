@@ -1,14 +1,9 @@
 <template>
   <div class="header">
     <img src="../../public/cook.png" />
-    <h2>We found some places you might like. Enjoy!</h2>
-    <div class="map-container">
-        <Maps 
-          :places="places.value"
-        />
-    </div>
-    {{ places }}
-   <router-link to="/"> Back to Home </router-link>
+    <h2>We found some {{cuisineType}} places you might like. Enjoy!</h2>
+    <RestaurantCard v-for="restaurant in restaurants" :key="restaurant.id" :restaurant="restaurant"/>
+   <router-link class="link" to="/"> Back to Home </router-link>
 
   </div>
 </template>
@@ -16,12 +11,12 @@
 //import router from "../router";
 import { ref } from "vue";
 import PlacesService from "../Services/PlacesService.js";
-import Maps from "../maps/Maps.vue";
+import RestaurantCard from "../components/RestaurantCard.vue";
 
 export default {
   name: "OrderResult",
   components: {
-      Maps
+      RestaurantCard
   },
   props: {
     cuisineType: {
@@ -38,12 +33,12 @@ export default {
     },
   },
   setup(props) {
-    let places = ref([]);
+    let restaurants = ref([]);
     
     PlacesService.GetPlacesByCuisineType(props.cuisineType, props.priceRange, props.distance)
       .then((resp) => {
-        places.value = resp.data;
-        //console.log(places.value.results);
+        restaurants.value = resp.data.results;
+        console.log(JSON.stringify(restaurants.value));
         //console.log(JSON.stringify(places.value));
       })
       .catch((err) => {
@@ -51,7 +46,7 @@ export default {
       });
 
     return {
-      places,
+      restaurants,
     };
   },
 };
@@ -64,25 +59,12 @@ export default {
   text-align: center;
   color: #2c3e50;
 }
-.button-container {
-  display: grid;
-  grid-template-columns: auto auto;
-  align-content: center;
-  height: 20%;
-}
-.map-container {
-    position: relative;
-    left: 25%;
-}
-button {
-  width: 25%;
-  height: 200%;
-  font-size: 100%;
-  font-family: Arial;
-  text-align: center;
-  background-color: rgb(108, 244, 238);
-  text-color: rgb(79, 79, 79);
-  border-radius: 60px;
-  border-color: white;
+
+.link {
+  font-family: 'Roboto Slab', serif;
+  font-size: 15px;
+  color: #2C3E50;
+  padding-bottom: 30px;
 }
 </style>
+
