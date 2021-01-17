@@ -3,36 +3,11 @@
     <h1>Just sit back & relax, good food is closer than you think!</h1>
     <img src="../../public/order.svg" />
     <h2>What are you craving?</h2>
-    <label class="cuisineLabel" for="cuisine">Choose a cuisine type:</label>
-    <select name="cuisine" id="cuisine">
-      <option value="african">African</option>
-      <option value="american">American</option>
-      <option value="british">British</option>
-      <option value="cajun">Cajun</option>
-      <option value="caribbean">Caribbean</option>
-      <option value="chinese">Chinese</option>
-      <option value="eastern-european">Eastern European</option>
-      <option value="european">European</option>
-      <option value="french">French</option>
-      <option value="german">German</option>
-      <option value="greek">Greek</option>
-      <option value="indian">Indian</option>
-      <option value="irish">Irish</option>
-      <option value="italian">Italian</option>
-      <option value="japanese">Japanese</option>
-      <option value="jewish">Jewish</option>
-      <option value="korean">Korean</option>
-      <option value="latin-american">Latin American</option>
-      <option value="mediterranean">Mediterranean</option>
-      <option value="mexican">Mexican</option>
-      <option value="middle-eastern">Middle Eastern</option>
-      <option value="nordic">Nordic</option>
-      <option value="southern">Southern</option>
-      <option value="spanish">Spanish</option>
-      <option value="thai">Thai</option>
-      <option value="vietnamese">Vietnamese</option>
-    </select>
-
+    <Dropdown
+      :options="this.options"
+      v-model="cuisine"
+      label="Cuisine Type: "
+    />
     <h2>How much do you want to spend?</h2>
     <div class="priceRange">
       <input type="radio" name="price" id="inexpensive" value="inexpensive"/>
@@ -45,23 +20,61 @@
       <label class="priceLabel" for="expensive">$$$</label>
 
     </div>
-    
+    <button @click.prevent="goToOrderResults">Go!</button>
   </div>
 </template>
 
 <script>
 import router from "../router";
+import Dropdown from "../components/Dropdown.vue";
+import { ref } from "vue";
 export default {
   name: "Order",
+  components: {
+    Dropdown,
+  },
   setup() {
-    function goToOrderResultsPage() {
+    const cuisine = ref("Select...");
+    function goToOrderResults() {
       router.push({
         name: "OrderResult",
       });
     }
-    
     return {
-      goToOrderResultsPage
+      goToOrderResults,
+      cuisine,
+    };
+  },
+  data() {
+    return {
+      options: [
+        "African",
+        "American",
+        "British",
+        "Cajun",
+        "Caribbean",
+        "Chinese",
+        "Eastern Europe",
+        "European",
+        "French",
+        "German",
+        "Greek",
+        "Indian",
+        "Irish",
+        "Italian",
+        "Japanese",
+        "Jewish",
+        "Korean",
+        "Latin American",
+        "Mediterranean",
+        "Mexican",
+        "Middle Eastern",
+        "Nordic",
+        "Southern",
+        "Spanish",
+        "Thai",
+        "Vietnamese",
+      ],
     };
   },
 };
@@ -79,10 +92,6 @@ export default {
   font-size: 20px;
 }
 
-label + select {
-  margin-left: 20px;
-}
-
 label + input {
   margin-left: 4%;
 }
@@ -96,4 +105,22 @@ img {
     max-height: 100%;
 }
 
+.button-container {
+  display: grid;
+  grid-template-columns: auto auto;
+  align-content: center;
+  height: 20%;
+}
+button {
+  margin-top: 2%;
+  width: 25%;
+  height: 200%;
+  font-size: 100%;
+  font-family: Arial;
+  text-align: center;
+  background-color: rgb(108, 244, 238);
+  text-color: rgb(79, 79, 79);
+  border-radius: 60px;
+  border-color: white;
+}
 </style>
