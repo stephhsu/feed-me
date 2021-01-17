@@ -42,7 +42,7 @@ export default {
 };
 </script>
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Roboto+Slab&family=Source+Code+Pro&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Leckerli+One&family=Roboto+Slab&family=Source+Code+Pro&display=swap');
 .header {
   font-family: Avenir, Calibri, Helvetica, sans-serif;
   -webkit-font-smoothing: antialiased;

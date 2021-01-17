@@ -1,21 +1,22 @@
 <template>
-  <div class="header">
-    <h1>Welcome to</h1>
-    <img src="../../public/logo.png" />
-    <h2>You're hungry!</h2>
-    <h3>Let's fix that.</h3>
+  <div class="background-panel">
+    <div class="header">
+      <h1>Welcome to</h1>
+      <img src="../../public/logo.png" />
+      <h2>You're hungry!</h2>
+      <h3>Let's fix that.</h3>
 
-    <h3>Tell us what you're in the mood for:</h3>
-    <div class="button-container">
-      <span>
-        <button @click.prevent="goToCookPage">LET'S COOK</button>
-      </span>
-      <span>
-        <button @click.prevent="goToOrderPage">I'll ORDER</button>
-      </span>
+      <h3>Tell us what you're in the mood for:</h3>
+      <div class="button-container">
+        <span>
+          <button @click.prevent="goToCookPage">LET'S COOK</button>
+        </span>
+        <span>
+          <button @click.prevent="goToOrderPage">I'LL ORDER</button>
+        </span>
+      </div>
     </div>
   </div>
-  
 </template>
 
 <script>
@@ -46,8 +47,16 @@ export default {
 </script>
 
 <style>
+@import url('https://fonts.googleapis.com/css2?family=Leckerli+One&family=Roboto+Slab&family=Source+Code+Pro&display=swap');
+body {
+  background-color: white;
+  background-repeat: no-repeat;
+  background-size: 100%;
+  width: 100%;
+  height: 100%; /* 100% of the viewport height */
+  margin: 0;
+}
 .header {
-  font-family: Avenir, Calibri, Helvetica, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
@@ -61,14 +70,14 @@ export default {
 }
 
 button {
-  width: 50%;
+  width: 25%;
   height: 200%;
-  font-size: 100%;
-  font-family: Arial;
+  font-size: 19px;
+  font-family: 'Leckerli One', cursive;
   text-align: center;
   background-color: rgb(108, 244, 238);
-  text-color: rgb(79, 79, 79);
-  border-radius: 60px;
+  color: rgb(79, 79, 79);
+  border-radius: 40px;
   border-color: white;
 }
 </style>
