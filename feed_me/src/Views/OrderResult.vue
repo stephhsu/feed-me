@@ -30,19 +30,20 @@ export default {
     },
     priceRange: {
         type: String, 
-        required: true,
+        required: false,
+    },
+    distance: {
+        type: Number,
+        required: false,
     },
   },
   setup(props) {
     let places = ref([]);
     
-    PlacesService.GetPlacesByCuisineType(props.cuisineType)
+    PlacesService.GetPlacesByCuisineType(props.cuisineType, props.priceRange, props.distance)
       .then((resp) => {
         places.value = resp.data.results;
         
-      })
-      .then(() => {
-          
       })
       .catch((err) => {
         console.log(err);

@@ -45,14 +45,16 @@ export default {
 </script>
 
 <style>
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Slab&display=swap');
 .grid {
   display: grid;
-  grid-template-colums: 30% 70%;
+  grid-template-columns: 30% 70%;
   height: stretch;
 }
 
 .label {
-  text-size: 25pt;
+  font-family: 'Roboto Slab', serif;
+  font-size: 18px;
   padding-left: 3px;
 }
 </style>

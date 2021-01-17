@@ -2,23 +2,28 @@
   <div class="header">
     <h1>Just sit back & relax, good food is closer than you think!</h1>
     <img src="../../public/order.svg" />
-    <h2>What are you craving?</h2>
+    <h3>What are you craving?</h3>
     <Dropdown
       :options="this.options"
       v-model="cuisine"
       label="Cuisine Type: "
     />
-    <h2>How much do you want to spend?</h2>
+    <h3>How much do you want to spend?</h3>
     <div class="priceRange">
-      <input type="radio" name="price" id="inexpensive" value="inexpensive"/>
+      <input type="radio" name="price" id="inexpensive" value="inexpensive" v-model="price"/>
       <label class="priceLabel" for="inexpensive">$</label>
 
-      <input type="radio" name="price" id="moderate" value="moderate"/>
+      <input type="radio" name="price" id="moderate" value="moderate" v-model="price"/>
       <label class="priceLabel" for="moderate">$$</label>
 
-      <input type="radio" name="price" id="expensive" value="expensive"/>
+      <input type="radio" name="price" id="expensive" value="expensive" v-model="price"/>
       <label class="priceLabel" for="expensive">$$$</label>
 
+    </div>
+    <h3>How far would you like to go?</h3>
+    <div class="priceRange">
+      <input type="number" v-model="radius" min="0" />
+      <label class="priceLabel"> meters</label>
     </div>
     <button @click.prevent="goToOrderResults">Go!</button>
   </div>
@@ -36,12 +41,14 @@ export default {
   setup() {
     const cuisine = ref();
     const price = ref();
+    const radius = ref();
     function goToOrderResults() {
       router.push({
         name: "OrderResult",
         params: { 
           cuisineType: cuisine.value, 
           priceRange: price.value, 
+          distance: radius.value,
         },
       });
     }
@@ -49,6 +56,7 @@ export default {
       goToOrderResults,
       cuisine,
       price,
+      radius,
     };
   },
   data() {

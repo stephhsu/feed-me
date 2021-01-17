@@ -1,9 +1,9 @@
 <template>
   <div class="header">
     <img src="../../public/cookdone.png" />
-    <h2>We got you some {{cuisineType}} recipes you might like. Enjoy!</h2>
+    <h2 class="cook-result-header">We got you some {{cuisineType}} recipes you might like. Enjoy!</h2>
     <RecipeCard @click.prevent="goToRecipe(recipe.id)" v-for="recipe in recipes" :key="recipe.id" :recipe="recipe"/>
-   <router-link to="/"> Back to Home </router-link>
+   <router-link class="link" to="/"> Back to Home </router-link>
   </div>
 </template>
 <script>
@@ -46,6 +46,7 @@ export default {
 };
 </script>
 <style>
+@import url('https://fonts.googleapis.com/css2?family=Leckerli+One&family=Roboto+Slab&family=Source+Code+Pro&display=swap');
 .header {
   font-family: Avenir, Calibri, Helvetica, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -53,22 +54,37 @@ export default {
   text-align: center;
   color: #2c3e50;
 }
+.cook-result-header {
+  font-family: 'Roboto Slab', serif;
+  font-size: 25px;
+  color: #2C3E50;
+  padding-bottom: 20px;
+}
+
 .button-container {
   display: grid;
   grid-template-columns: auto auto;
   align-content: center;
   height: 20%;
 }
+
 button {
   width: 25%;
   height: 200%;
-  font-size: 100%;
-  font-family: Arial;
+  font-size: 19px;
+  font-family: 'Leckerli One', cursive;
   text-align: center;
   background-color: rgb(108, 244, 238);
-  text-color: rgb(79, 79, 79);
-  border-radius: 60px;
+  color: rgb(79, 79, 79);
+  border-radius: 40px;
   border-color: white;
+}
+
+.link {
+  font-family: 'Roboto Slab', serif;
+  font-size: 15px;
+  color: #2C3E50;
+  padding-bottom: 30px;
 }
 </style>
 

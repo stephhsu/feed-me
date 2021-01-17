@@ -8,7 +8,7 @@
       :options="this.options"
       v-model="cuisine"
       label="Cuisine Type: "
-    />
+    /><br>
     <button @click.prevent="goToCookResults">Go!</button>
   </div>
 </template>
@@ -70,13 +70,22 @@ export default {
 };
 </script>
 <style>
+@import url('https://fonts.googleapis.com/css2?family=Leckerli+One&family=Roboto+Slab&family=Source+Code+Pro&display=swap');
 .header {
-  font-family: Avenir, Calibri, Helvetica, sans-serif;
+  font-family: 'Roboto Slab', serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
 }
+h1 {
+  font-family: 'Roboto Slab', serif;
+}
+h3 {
+  font-family: 'Roboto Slab', serif;
+  font-size: 20px;
+}
+
 .button-container {
   display: grid;
   grid-template-columns: auto auto;
@@ -86,12 +95,12 @@ export default {
 button {
   width: 25%;
   height: 200%;
-  font-size: 100%;
-  font-family: Arial;
+  font-size: 19px;
+  font-family: 'Leckerli One', cursive;
   text-align: center;
   background-color: rgb(108, 244, 238);
-  text-color: rgb(79, 79, 79);
-  border-radius: 60px;
+  color: rgb(79, 79, 79);
+  border-radius: 40px;
   border-color: white;
 }
 </style>
