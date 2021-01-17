@@ -11,5 +11,9 @@ const key="5f50f4af0182474b8ac4bca604f3810f"
 export default {
     GetRecipesByCuisineType(cuisine) {
         return apiClient.get('https://api.spoonacular.com/recipes/complexSearch?cuisine='+cuisine.toLowerCase()+'&apiKey='+key)
+    },
+
+    GetRecipeData(ID) {
+        return apiClient.get("https://api.spoonacular.com/recipes/"+ID+"/information?includeNutrition=false&apiKey"+key)
     }
 }
