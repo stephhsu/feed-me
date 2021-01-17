@@ -1,70 +1,42 @@
 <template>
   <div class="header">
-    <h1>Okay chef!</h1>
-    <img src="../../public/cook.png" />
-    <h2>Let's get you some recipes.</h2>
-    <h3>Tell us what you're craving today:</h3>
-    <Dropdown
-      :options="this.options"
-      v-model="cuisine"
-      label="Cuisine Type: "
-    />
-    <button @click.prevent="goToCookResults">Go!</button>
+    <h2>{{ recipe.title }}</h2>
+  </div>
+  <div>
+    <img class="img" :src="recipe.image" />
+    <h4>Servings: {{ recipe.servings }}</h4>
+    <h4>Cooking Time: {{ recipe.readyInMinutes }}</h4>
+    <a :href="recipe.sourceUrl">Check out the original source here!</a>
+    <h4>Ingredients Needed</h4>
+    <ol>
+      <li v-for="ingredient in recipe.extendedIngredients" :key="ingredient.id">
+        {{ ingredient.original }}
+      </li>
+    </ol>
+    <span class="back">
+      <router-link to="/"> Back to Home </router-link>
+    </span>
   </div>
 </template>
+
 <script>
-import router from "../router";
-import Dropdown from "../components/Dropdown.vue";
+import RecipeService from "../Services/RecipeService.js";
 import { ref } from "vue";
 export default {
   name: "Recipe",
-  components: {
-    Dropdown,
+  props: {
+    id: {
+      required: true,
+    },
   },
-  setup() {
-    const cuisine = ref("");
-    function goToCookResults() {
-      console.log(cuisine.value)
-      router.push({
-        name: "CookResult",
-        params: { cuisineType: cuisine.value },
-      });
-    }
+  setup(props) {
+    let recipe = ref({});
+    RecipeService.GetRecipeData(props.id).then((resp) => {
+      recipe.value = resp.data;
+    });
+
     return {
-      goToCookResults,
-      cuisine,
-    };
-  },
-  data() {
-    return {
-      options: [
-        "African",
-        "American",
-        "British",
-        "Cajun",
-        "Caribbean",
-        "Chinese",
-        "Eastern Europe",
-        "European",
-        "French",
-        "German",
-        "Greek",
-        "Indian",
-        "Irish",
-        "Italian",
-        "Japanese",
-        "Jewish",
-        "Korean",
-        "Latin American",
-        "Mediterranean",
-        "Mexican",
-        "Middle Eastern",
-        "Nordic",
-        "Southern",
-        "Spanish",
-        "Thai",
-        "Vietnamese",
-      ],
+      recipe,
     };
   },
 };
@@ -77,21 +49,26 @@ export default {
   text-align: center;
   color: #2c3e50;
 }
-.button-container {
-  display: grid;
-  grid-template-columns: auto auto;
-  align-content: center;
-  height: 20%;
+
+li{
+    text-align: left;
 }
-button {
-  width: 25%;
-  height: 200%;
-  font-size: 100%;
-  font-family: Arial;
+.img {
+  border-radius: 25%;
+  height: 30%;
+  width: 50%;
+}
+.back {
+  display: flex;
   text-align: center;
-  background-color: rgb(108, 244, 238);
-  text-color: rgb(79, 79, 79);
-  border-radius: 60px;
-  border-color: white;
+}
+a:link {
+  color: rgb(42, 44, 44);
+}
+a:active {
+  color: cadetblue;
+}
+a:hover {
+  color: rgba(85, 223, 204, 0.76);
 }
 </style>

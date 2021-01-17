@@ -5,6 +5,7 @@ import CookResult from '../Views/CookResult.vue'
 import Order from '../Views/Order.vue'
 import OrderResult from '../Views/OrderResult.vue'
 import NotFound from "../Views/NotFound.vue"
+import Recipe from '../Views/Recipe.vue'
 const routes = [
   {
     path: '/',
@@ -20,6 +21,12 @@ const routes = [
     path: '/cook-result',
     name: 'CookResult',
     component: CookResult,
+    props: true
+  },
+  {
+    path:'/recipe',
+    name: 'Recipe',
+    component: Recipe,
     props: true
   },
   {
