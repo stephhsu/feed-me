@@ -43,6 +43,8 @@ export default {
     PlacesService.GetPlacesByCuisineType(props.cuisineType, props.priceRange, props.distance)
       .then((resp) => {
         places.value = resp.data;
+        //console.log(places.value.results);
+        //console.log(JSON.stringify(places.value));
       })
       .catch((err) => {
         console.log(err);

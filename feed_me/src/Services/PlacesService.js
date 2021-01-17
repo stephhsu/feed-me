@@ -28,7 +28,7 @@ export default {
             priceMin = 2;
             priceMax = 3;
         }
-        console.log(radius);
+        
         if(radius === undefined || radius == "undefined") {
             distance = 1000;
         } else {
